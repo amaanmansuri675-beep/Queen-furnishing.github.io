@@ -1,0 +1,509 @@
+<!-- Save this file as index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Queen Furnishing</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#0f0f0f;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      z-index:1000;
+      background:rgba(0,0,0,0.6);
+      backdrop-filter:blur(10px);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 7%;
+    }
+
+    nav h1{
+      color:#f5d27d;
+      font-size:26px;
+      font-weight:700;
+      letter-spacing:1px;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:20px;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      font-size:14px;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#f5d27d;
+    }
+
+    /* HERO SECTION */
+
+    .hero{
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.6)),
+      url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero-content{
+      animation:fadeIn 1.5s ease;
+    }
+
+    .hero h2{
+      font-size:55px;
+      color:#fff;
+      margin-bottom:20px;
+      text-shadow:0 0 15px rgba(0,0,0,0.5);
+    }
+
+    .hero p{
+      font-size:18px;
+      color:#ddd;
+      max-width:700px;
+      margin:auto;
+      line-height:1.7;
+    }
+
+    .hero-btn{
+      display:inline-block;
+      margin-top:35px;
+      padding:15px 35px;
+      border-radius:40px;
+      background:linear-gradient(45deg,#f5d27d,#d8a84f);
+      color:black;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.4s;
+      box-shadow:0 10px 30px rgba(245,210,125,0.3);
+    }
+
+    .hero-btn:hover{
+      transform:translateY(-5px) scale(1.05);
+    }
+
+    /* SECTION */
+
+    section{
+      padding:90px 7%;
+    }
+
+    .title{
+      text-align:center;
+      margin-bottom:50px;
+    }
+
+    .title h3{
+      font-size:38px;
+      color:#f5d27d;
+      margin-bottom:10px;
+    }
+
+    .title p{
+      color:#aaa;
+    }
+
+    /* CATEGORY */
+
+    .categories{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      position:relative;
+      overflow:hidden;
+      border-radius:20px;
+      height:320px;
+      cursor:pointer;
+      transition:0.5s;
+    }
+
+    .card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:0.5s;
+    }
+
+    .card:hover img{
+      transform:scale(1.1);
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(transparent,rgba(0,0,0,0.8));
+      display:flex;
+      align-items:flex-end;
+      padding:20px;
+    }
+
+    .overlay h4{
+      font-size:24px;
+    }
+
+    /* PRODUCTS */
+
+    .products{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .product{
+      background:#1a1a1a;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .product:hover{
+      transform:translateY(-10px);
+      box-shadow:0 15px 35px rgba(0,0,0,0.4);
+    }
+
+    .product img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+    }
+
+    .product-content{
+      padding:20px;
+    }
+
+    .product-content h4{
+      margin-bottom:10px;
+      font-size:22px;
+    }
+
+    .price{
+      color:#f5d27d;
+      font-size:20px;
+      font-weight:600;
+      margin-bottom:15px;
+    }
+
+    .buy-btn{
+      display:inline-block;
+      padding:10px 20px;
+      background:#f5d27d;
+      color:black;
+      border-radius:30px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .buy-btn:hover{
+      background:white;
+    }
+
+    /* ABOUT */
+
+    .about{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:40px;
+      align-items:center;
+    }
+
+    .about img{
+      width:100%;
+      border-radius:20px;
+    }
+
+    .about-text h3{
+      font-size:42px;
+      margin-bottom:20px;
+      color:#f5d27d;
+    }
+
+    .about-text p{
+      color:#ccc;
+      line-height:1.8;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#080808;
+      padding:40px 7%;
+      text-align:center;
+    }
+
+    footer h2{
+      color:#f5d27d;
+      margin-bottom:10px;
+    }
+
+    footer p{
+      color:#999;
+      margin-bottom:20px;
+    }
+
+    .socials a{
+      color:white;
+      margin:0 10px;
+      font-size:22px;
+      text-decoration:none;
+      transition:0.3s;
+    }
+
+    .socials a:hover{
+      color:#f5d27d;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      nav{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      nav ul{
+        gap:12px;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero h2{
+        font-size:38px;
+      }
+
+      .hero p{
+        font-size:15px;
+      }
+
+      .title h3{
+        font-size:30px;
+      }
+
+      .about-text h3{
+        font-size:32px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <h1>Queen Furnishing</h1>
+
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+      <h2>Dress Your Home in Royalty</h2>
+
+      <p>
+        Luxury curtains, premium sofa fabrics, elegant cushions,
+        aesthetic home decor and royal furnishing collections.
+      </p>
+
+      <a href="#products" class="hero-btn">
+        Explore Collection
+      </a>
+    </div>
+
+  </section>
+
+  <!-- CATEGORIES -->
+
+  <section id="categories">
+
+    <div class="title">
+      <h3>Premium Categories</h3>
+      <p>Luxury collection for your dream home</p>
+    </div>
+
+    <div class="categories">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="overlay">
+          <h4>Luxury Curtains</h4>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="overlay">
+          <h4>Designer Sofas</h4>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="overlay">
+          <h4>Premium Bedsheets</h4>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="overlay">
+          <h4>Modern Decor</h4>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PRODUCTS -->
+
+  <section id="products">
+
+    <div class="title">
+      <h3>The Queen's Choice</h3>
+      <p>Top luxury furnishing products</p>
+    </div>
+
+    <div class="products">
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="product-content">
+          <h4>Velvet Curtains</h4>
+          <div class="price">₹2,499</div>
+
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="product-content">
+          <h4>Royal Sofa Fabric</h4>
+          <div class="price">₹3,299</div>
+
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="product-content">
+          <h4>Luxury Cushion Set</h4>
+          <div class="price">₹1,499</div>
+
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="about">
+
+      <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="about-text">
+        <h3>About Queen Furnishing</h3>
+
+        <p>
+          Queen Furnishing brings modern luxury and royal aesthetics
+          to your home. From elegant curtains to premium decor,
+          we create comfort with style.
+          Our mission is to transform every room into a masterpiece.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h2>Queen Furnishing</h2>
+
+    <p>
+      Premium Home Decor & Furnishing Brand
+    </p>
+
+    <div class="socials">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">YouTube</a>
+    </div>
+
+  </footer>
+
+</body>
+</html>
